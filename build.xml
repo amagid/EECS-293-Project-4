@@ -10,7 +10,7 @@
 
     <property name="report.dir"  value="${build.dir}/junitreport"/>
 
-    
+
 
     <target name="clean">
         <delete dir="${build.dir}"/>
@@ -38,7 +38,7 @@
 
     <target name="main" depends="clean,run"/>
 
-    <target name="junit" depends="jar">
+    <target name="test" depends="jar">
         <mkdir dir="${report.dir}"/>
         <junit printsummary="yes">
             <classpath>
