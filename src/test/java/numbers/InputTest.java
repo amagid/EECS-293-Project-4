@@ -4,8 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import numbers.DecimalInput.TestHook;
-
 /** Some example tests of parser **/
 public class InputTest {
 
