@@ -10,10 +10,6 @@
 
     <property name="report.dir"  value="${build.dir}/junitreport"/>
 
-    <classpath>
-        <pathelement path="${classpath}"/>
-    </classpath>
-
     <target name="clean">
         <delete dir="${build.dir}"/>
     </target>
@@ -44,8 +40,7 @@
         <mkdir dir="${report.dir}"/>
         <junit printsummary="yes">
             <classpath>
-                <path refid="classpath"/>
-                <path refid="application"/>
+                <pathelement path="${classpath}"/>
             </classpath>
 
             <formatter type="xml"/>
