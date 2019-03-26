@@ -45,7 +45,7 @@ public class InputTest {
 	/* Example: _1_234 -> invalid */
 	@Test
 	public void test_simulated_input() {
-		String result = floatingPointDriverHook.simulateInput("");
+		String result = floatingPointDriverHook.simulateInput("12.3456e2");
 		System.out.println("============" + result);
 		assertTrue(true);
 	}
