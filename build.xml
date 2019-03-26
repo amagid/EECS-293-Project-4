@@ -10,7 +10,9 @@
 
     <property name="report.dir"  value="${build.dir}/junitreport"/>
 
-
+    <classpath>
+        <pathelement path="${classpath}"/>
+    </classpath>
 
     <target name="clean">
         <delete dir="${build.dir}"/>
