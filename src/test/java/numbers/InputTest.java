@@ -13,6 +13,6 @@ public class InputTest {
 	/* Example: 1_234 -> valid */
 	@Test
 	public void test_padding_nominal() {
-		assertTrue(true);
+		assert(true);
 	}
 }
