@@ -1,6 +1,6 @@
 package numbers;
 
-import static org.junit.Assert.*;
+import org.junit.Assert;
 
 import org.junit.Test;
 
@@ -11,6 +11,20 @@ public class InputTest {
 	/* Example: 1_234 -> valid */
 	@Test
 	public void test_padding_nominal() {
-		assert(true);
+		Assert.assertTrue(true);
+	}
+
+	/** hasValidMiddlePadding tests **/
+	/* Example: 1_234 -> valid */
+	@Test
+	public void test_padding_nominal2() {
+		Assert.assertTrue(true);
+	}
+
+	/** hasValidMiddlePadding tests **/
+	/* Example: 1_234 -> valid */
+	@Test
+	public void test_padding_nominal3() {
+		Assert.assertTrue(true);
 	}
 }
