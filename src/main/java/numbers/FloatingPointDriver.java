@@ -71,11 +71,12 @@ public final class FloatingPointDriver {
 			BufferedReader inputReader = new BufferedReader(new InputStreamReader(System.in));
 
 			System.setIn(new ByteArrayInputStream(input.getBytes()));
-			System.out.println(input);
-			System.setIn(System.in);
 		
 			FloatingPointDriver driver = new FloatingPointDriver();
 			Optional<Double> result = driver.runFloatingPointParser(inputReader);
+
+			System.out.println(input);
+			System.setIn(System.in);
 
 			return result.isPresent() ? result.get().toString() : "Invalid Input";
 		}
