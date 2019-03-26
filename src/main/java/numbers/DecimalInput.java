@@ -120,7 +120,7 @@ class DecimalInput {
 	
 	private static String getRegexOf(char ch) { return ""+ch; }
 	
-	class TestHook {
+	class DecimalInputTestHook {
 		boolean hasValidMiddlePadding(String leading) { 
 			return DecimalInput.hasValidMiddlePadding(leading); 
 		}

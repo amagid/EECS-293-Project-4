@@ -2,6 +2,7 @@ package numbers;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.ByteArrayInputStream;
 import java.util.Optional;
 
 /* Driver to build and run FloatingPointParser on input readers */
@@ -62,6 +63,19 @@ public final class FloatingPointDriver {
 			return FloatingPointParser.build("input that is really bad");
 		} else {
 			return parser;
+		}
+	}
+	
+	public static class FloatingPointDriverTestHook {
+		String simulateInput(String input) { 
+			BufferedReader inputReader = new BufferedReader(new InputStreamReader(System.in));
+
+			System.setIn(new ByteArrayInputStream(input.getBytes()));
+		
+			FloatingPointDriver driver = new FloatingPointDriver();
+			Optional<Double> result = driver.runFloatingPointParser(inputReader);
+
+			return result.isPresent() ? result.get().toString() : "Invalid Input";
 		}
 	}
 }

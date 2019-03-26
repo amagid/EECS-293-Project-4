@@ -55,4 +55,8 @@ public class FloatingPointParser {
 	public static final FloatingPointParser build (String number) {
 		return number != null ? new FloatingPointParser(number) : INVALID_PARSER;
 	}
+	
+	public static class FloatingPointParserTestHook {
+
+	}
 }
