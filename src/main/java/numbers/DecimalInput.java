@@ -65,9 +65,9 @@ class DecimalInput {
 	 */
 	private boolean hasValidDecimalPoint() {
 		String[] numbers = getAllChunks();
-		return numbers.length <= 2 
-				&& !numbers[0].isEmpty()
-				&& !numbers[1].isEmpty();
+		return numbers.length < 2 
+				|| (!numbers[0].isEmpty()
+				&& !numbers[1].isEmpty());
 	}
 
 	/* A number is considered to have valid padding if they only appear 
