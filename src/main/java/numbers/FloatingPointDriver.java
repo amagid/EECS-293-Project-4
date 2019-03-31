@@ -68,7 +68,9 @@ public final class FloatingPointDriver {
 	
 	public static class FloatingPointDriverTestHook {
 		String simulateInput(String input) { 
-			BufferedReader inputReader = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(input.getBytes())));
+			System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+			BufferedReader inputReader = new BufferedReader(new InputStreamReader(System.in));
 
 			System.out.println(input);
 					
