@@ -5,6 +5,7 @@
     <property name="build.dir" value="build" />
     <property name="classes.dir" value="${build.dir}/classes" />
     <property name="jar.dir" value="${build.dir}/jar" />
+    <property name="test-classes.dir" value="${build.dir}/test/classes"/>
 
     <property name="main-class" value="numbers.DecimalInput" />
 
@@ -15,6 +16,7 @@
     <path id="test.classpath">
         <pathelement location="${classes.dir}" />
         <pathelement location="./junit-4.11.jar" />
+        <pathelement location="${test-classes.dir}"/>
         <fileset dir="${build.dir}">
             <include name="**/*.jar" />
         </fileset>
@@ -48,9 +50,13 @@
 
     <target name="test">
         <junit fork="yes" haltonfailure="yes">
-            <test name="${test.class.name}" />
             <formatter type="plain" usefile="false" />
             <classpath refid="test.classpath" />
+            <batchtest>
+                <fileset dir="${test-classes.dir}">
+                    <include name="**/*.class"/>
+                </fileset>
+            </batchtest>
         </junit>
     </target>
 
