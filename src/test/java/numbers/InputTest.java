@@ -45,7 +45,7 @@ public class InputTest {
 	/* Test 1.2 -> valid */
 	@Test
 	public void test_simulated_input() {
-		String input = "1.2\n";
+		String input = "2e+5\n";
 		String result = floatingPointDriverHook.simulateInput(input);
 		System.out.println("============" + result);
 		assertTrue(result == input);
