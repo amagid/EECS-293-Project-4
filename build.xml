@@ -10,8 +10,10 @@
 
     <property name="report.dir" value="${build.dir}/junitreport" />
 
-    <property name="test.integration.name" value="numbers.InputTest" />
+    <property name="test.Integration.name" value="numbers.IntegrationTest" />
     <property name="test.DecimalInput.name" value="numbers.DecimalInputTest" />
+    <property name="test.FloatingPointDriver.name" value="numbers.FloatingPointDriverTest" />
+    <property name="test.FloatingPointParser.name" value="numbers.FloatingPointParserTest" />
 
     <path id="test.classpath">
         <pathelement location="${classes.dir}" />
@@ -49,8 +51,10 @@
 
     <target name="test">
         <junit fork="yes" haltonfailure="no">
-            <test name="${test.integration.name}" />
+            <test name="${test.Integration.name}" />
             <test name="${test.DecimalInput.name}" />
+            <test name="${test.FloatingPointDriver.name}" />
+            <test name="${test.FloatingPointParser.name}" />
             <formatter type="plain" usefile="false" />
             <classpath refid="test.classpath" />
         </junit>

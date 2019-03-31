@@ -10,37 +10,12 @@ import numbers.FloatingPointParser.FloatingPointParserTestHook;
 
 
 /** Some example tests of parser **/
-public class InputTest {
+public class IntegrationTest {
 
 	// For using hook methods that are not object-specific
 	private static final DecimalInputTestHook decimalInputHook = new DecimalInput("").new DecimalInputTestHook();
 	private static final FloatingPointParserTestHook floatingPointParserHook = new FloatingPointParser.FloatingPointParserTestHook();
 	private static final FloatingPointDriverTestHook floatingPointDriverHook = new FloatingPointDriver.FloatingPointDriverTestHook();
-
-	/** hasValidMiddlePadding tests **/
-	/* Example: 1_234 -> valid */
-	@Test
-	public void test_padding_nominal() {
-		assertTrue(decimalInputHook.hasValidMiddlePadding("1_234"));
-	}
-
-	/* Example: 1__234 -> valid */
-	@Test
-	public void test_padding_long_underscore() {
-		assertTrue(decimalInputHook.hasValidMiddlePadding("1__234"));
-	}
-
-	/* Example: 12_34 -> invalid */
-	@Test
-	public void test_padding_bad_underscore() {
-		assertFalse(decimalInputHook.hasValidMiddlePadding("12_34"));
-	}
-
-	/* Example: _1_234 -> invalid */
-	@Test
-	public void test_padding_leading_underscore() {
-		assertFalse(decimalInputHook.hasValidMiddlePadding("_1_234"));
-	}
 
 	/* Test 2e+5 -> valid */
 	@Test
