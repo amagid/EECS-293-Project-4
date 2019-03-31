@@ -65,7 +65,7 @@ class DecimalInput {
 	 */
 	private boolean hasValidDecimalPoint() {
 		String[] numbers = getAllChunks();
-		return numbers.length < 2 
+		return numbers.length == 1 
 				|| (!numbers[0].isEmpty()
 				&& !numbers[1].isEmpty());
 	}
@@ -123,6 +123,12 @@ class DecimalInput {
 	class DecimalInputTestHook {
 		boolean hasValidMiddlePadding(String leading) { 
 			return DecimalInput.hasValidMiddlePadding(leading); 
+		}
+
+		boolean hasValidDecimalPoint(String input) {
+			DecimalInput number = new DecimalInput(input);
+
+			return number.hasValidDecimalPoint();
 		}
 	}
 }
