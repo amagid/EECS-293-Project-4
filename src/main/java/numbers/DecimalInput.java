@@ -122,7 +122,9 @@ class DecimalInput {
 	
 	private static boolean isNotWithinString (char c, String str) { return str.indexOf(c) < 0; }
 	
-	private static String getRegexOf(char ch) { return ""+ch; }
+	private static String getRegexOf(char ch) {
+		return (ch == DECIMAL ? "\\" : "") + ch;
+	}
 	
 	class DecimalInputTestHook {
 		boolean hasValidMiddlePadding(String leading) { 

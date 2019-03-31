@@ -2,4 +2,8 @@
 
 #### hasValidDecimalPoint()
 
-Line 68: Changed first length condition to fix off-by-one error (<=2 -> ==1)
+Changed condition to verify there are **1 or 2** chunks and that all chunks are not empty.
+
+#### getRegexOf()
+
+Added backslash to escape DECIMAL character constant ('.').
