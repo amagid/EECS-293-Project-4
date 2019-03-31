@@ -50,6 +50,10 @@
     <target name="test">
         <junit fork="yes" haltonfailure="yes">
             <test name="${test.integration.name}" />
+            <formatter type="plain" usefile="false" />
+            <classpath refid="test.classpath" />
+        </junit>
+        <junit fork="yes" haltonfailure="yes">
             <test name="${test.DecimalInput.name}" />
             <formatter type="plain" usefile="false" />
             <classpath refid="test.classpath" />
