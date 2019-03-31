@@ -42,11 +42,12 @@ public class InputTest {
 		assertFalse(decimalInputHook.hasValidMiddlePadding("_1_234"));
 	}
 
-	/* Example: _1_234 -> invalid */
+	/* Test 1.2 -> valid */
 	@Test
 	public void test_simulated_input() {
-		String result = floatingPointDriverHook.simulateInput("12.3456789e234\r\n");
+		String input = "1.2";
+		String result = floatingPointDriverHook.simulateInput(input);
 		System.out.println("============" + result);
-		assertTrue(true);
+		assertTrue(result == input);
 	}
 }
