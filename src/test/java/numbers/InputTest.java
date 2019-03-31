@@ -42,7 +42,7 @@ public class InputTest {
 		assertFalse(decimalInputHook.hasValidMiddlePadding("_1_234"));
 	}
 
-	/* Test 1.2 -> valid */
+	/* Test 2e+5 -> valid */
 	@Test
 	public void test_simulated_input() {
 		String input = "2e+5\n";
