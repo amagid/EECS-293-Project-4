@@ -83,7 +83,7 @@ class DecimalInput {
 				&& hasValidLeadingPadding(numbers[0]);
 	}
 	
-	private String[] getAllChunks() { return number.split(getRegexOf(DECIMAL)); }
+	private String[] getAllChunks() { return number.split(getRegexOf(DECIMAL), -1); }
 	
 	private static boolean hasValidLeadingPadding(String leading) {
 		return hasNoEdgePadding(leading) && hasValidMiddlePadding(leading);
