@@ -16,9 +16,13 @@ Added -1 second argument to .split() to preserve trailing empty strings. This al
 
 Changed default return of ternary operator from **false** to **true** to properly handle integer exponents (only check "left" part of number when there is no right part)
 
-#### isNumberPositive
+#### isNumberPositive()
 
 Changed secondary condition from **number[0] == '+'** to **number[0] != '-'** to express that numbers are positive when no sign is present.
+
+#### removeSign()
+
+Added **'+'** to list of signs so it will be properly recognized and removed from numbers.
 
 ## FloatingPointParser
 
