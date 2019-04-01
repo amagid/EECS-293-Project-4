@@ -35,3 +35,7 @@ Changed default exponent to **0** instead of **1** since when no exponent is sup
 Changed EXPONENTIAL to a **char[] EXPONENTIALS** containing both **'e'** and **'E'** so that capital E exponents will be properly recognized." Updated constructor and parseDouble to work with this new array format.
 
 ## FloatingPointDriver
+
+#### getFloatingPointParser
+
+Modified whitespace check to throw NumberFormatException when number contains internally embedded whitespace.

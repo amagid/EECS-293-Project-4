@@ -41,9 +41,19 @@ public final class FloatingPointDriver {
 				throw new NullPointerException("No input recieved.");
 			else {
 				StringBuilder builder = new StringBuilder();
-				for (int i = 0; i < line.length(); i++)
-					if (!Character.isWhitespace(line.charAt(i)))
+				boolean foundNumber = false;
+				boolean outOfNumber = false;
+				for (int i = 0; i < line.length(); i++) {
+					if (!Character.isWhitespace(line.charAt(i))) {
 						builder.append(line.charAt(i));
+						foundNumber = true;
+						if (outOfNumber) {
+							throw new NumberFormatException("Illegal embedded whitespace in input.");
+						}
+					} else if (foundNumber && !outOfNumber) {
+						outOfNumber = true;
+					}
+				}
 				line = builder.toString();
 				if (line.length() != 0) {
 					builder = new StringBuilder();
