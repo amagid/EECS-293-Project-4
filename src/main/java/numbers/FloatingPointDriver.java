@@ -37,7 +37,11 @@ public final class FloatingPointDriver {
 		String line = getNonEmptyInputLine(input);
 
 		// Clear whitespace from input line
-		String number = clearWhitespace(line);
+		String number = trimEdgeWhitespace(line);
+
+		if (hasInternalWhitespace(number)) {
+			throw new NumberFormatException("Illegal internal whitespace in input.");
+		}
 
 		// Ensure some non-whitespace input was found
 		if (number.length() == 0) {
@@ -62,23 +66,37 @@ public final class FloatingPointDriver {
 		return line;
 	}
 
-	private String clearWhitespace(String inputLine) {
+	private String trimEdgeWhitespace(String inputLine) {
 		StringBuilder builder = new StringBuilder();
-		boolean foundNumber = false;
-		boolean outOfNumber = false;
-		for (int i = 0; i < inputLine.length(); i++) {
-			if (!Character.isWhitespace(inputLine.charAt(i))) {
+		int endIndex = numberEndIndex(inputLine);
+		boolean inNumber = false;
+		for (int i = 0; i < endIndex; i++) {
+			if (inNumber || !Character.isWhitespace(inputLine.charAt(i))) {
+				inNumber = true;
 				builder.append(inputLine.charAt(i));
-				foundNumber = true;
-				if (outOfNumber) {
-					throw new NumberFormatException("Illegal embedded whitespace in input.");
-				}
-			} else if (foundNumber && !outOfNumber) {
-				outOfNumber = true;
 			}
 		}
 
 		return builder.toString();		
+	}
+
+	private int numberEndIndex(String inputLine) {
+		int endIndex = inputLine.length();
+
+		while (endIndex >= 0 && Character.isWhitespace(inputLine.charAt(endIndex - 1))) {
+			endIndex--;
+		}
+
+		return endIndex;
+	}
+
+	private boolean hasInternalWhitespace(String number) {
+		for (int i = 0; i < number.length(); i++) {
+			if (Character.isWhitespace(number.charAt(i))) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public static class FloatingPointDriverTestHook {
