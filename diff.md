@@ -19,3 +19,9 @@ Changed default return of ternary operator from **false** to **true** to properl
 #### isNumberPositive
 
 Changed secondary condition from **number[0] == '+'** to **number[0] != '-'** to express that numbers are positive when no sign is present.
+
+## FloatingPointParser
+
+#### DEFAULT_EXPONENT
+
+Changed default exponent to **0** instead of **1** since when no exponent is supplied, the number should be multiplied by **1**, not **10**.
