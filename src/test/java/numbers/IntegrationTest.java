@@ -18,9 +18,9 @@ public class IntegrationTest {
 			Double result = floatingPointDriverHook.simulateInput(input);
 
 			assertNull(result);
-		} catch (NullPointerException e) {
-			assertTrue(true);
-		} catch (Exception e) {
+		} catch (NullPointerException e) {}
+		 catch (NumberFormatException e) {}
+		catch (Exception e) {
 			fail();
 		}
 	}
