@@ -25,6 +25,7 @@ public class IntegrationTest {
 		}
 	}
 
+	/** Numbers MUST contain digits */
 	@Test
 	public void test_simulated_input_empty() {
 		String input = "";
@@ -39,6 +40,7 @@ public class IntegrationTest {
 		assertInvalidInput(input);
 	}
 
+	/** Numbers MAY begin with + or - */
 	@Test
 	public void test_simulated_input_zero() {
 		String input = "0.0";
@@ -69,6 +71,7 @@ public class IntegrationTest {
 		assertEquals(result, expected);
 	}
 
+	/** Numbers MUST contain decimal, exponent, or both */
 	@Test
 	public void test_simulated_input_integer_with_exponent() {
 		String input = "1e1";
@@ -80,6 +83,17 @@ public class IntegrationTest {
 	}
 
 	@Test
+	public void test_simulated_input_decimal_base_and_exponent() {
+		String input = "2.0e+4";
+		Double expected = 20000.0;
+
+		Double result = floatingPointDriverHook.simulateInput(input);
+
+		assertEquals(result, expected);
+	}
+
+	/** Exponents MUST begin with either e or E */
+	@Test
 	public void test_simulated_input_integer_with_capital_exponent() {
 		String input = "1E1";
 		Double expected = 10.0;
@@ -88,6 +102,8 @@ public class IntegrationTest {
 
 		assertEquals(result, expected);
 	}
+
+	/** Exponents MAY begin with + or - */
 
 	@Test
 	public void test_simulated_input_integer_with_plus_exponent() {
@@ -109,15 +125,19 @@ public class IntegrationTest {
 		assertEquals(result, expected);
 	}
 
+	/** Numbers MAY be arbitrarily large */
+
 	@Test
 	public void test_simulated_input_large_base_no_commas() {
-		String input = "1234567.0";
-		Double expected = 1234567.0;
+		String input = "12345678987654321.0";
+		Double expected = 12345678987654321.0;
 
 		Double result = floatingPointDriverHook.simulateInput(input);
 
 		assertEquals(result, expected);
 	}
+
+	/** Numbers MAY contain commas in valid places for readability */
 
 	@Test
 	public void test_simulated_input_large_base_commas() {
@@ -129,6 +149,8 @@ public class IntegrationTest {
 		assertEquals(result, expected);
 	}
 
+	/** Numbers MAY use underscores in place of commas */
+
 	@Test
 	public void test_simulated_input_large_base_underscores() {
 		String input = "1_234_567.0";
@@ -139,6 +161,16 @@ public class IntegrationTest {
 		assertEquals(result, expected);
 	}
 
+	/** Numbers MUST NOT use multiple commas/underscores in a row */
+
+	@Test
+	public void test_simulated_input_large_base_wide_commas() {
+		String input = "1,,234,,,,,,567.0";
+		Double expected = 1234567.0;
+
+		assertInvalidInput(input);
+	}
+
 	@Test
 	public void test_simulated_input_large_base_wide_underscores() {
 		String input = "1__234______567.0";
@@ -146,6 +178,8 @@ public class IntegrationTest {
 
 		assertInvalidInput(input);
 	}
+
+	/** Numbers MUST NOT use commas/underscores where they would be invalid in normal writing */
 
 	@Test
 	public void test_simulated_input_invalid_commas() {
@@ -161,22 +195,23 @@ public class IntegrationTest {
 		assertInvalidInput(input);
 	}
 
+	/** Exponents MUST NOT contain commas/underscores */
+
 	@Test
 	public void test_simulated_input_invalid_exponent() {
 		String input = "1e1,0";
 
 		assertInvalidInput(input);
 	}
-
+	
 	@Test
-	public void test_simulated_input_decimal_base_and_exponent() {
-		String input = "2.0e+4";
-		Double expected = 20000.0;
+	public void test_simulated_input_invalid_exponent_underscore() {
+		String input = "1e1_0";
 
-		Double result = floatingPointDriverHook.simulateInput(input);
-
-		assertEquals(result, expected);
+		assertInvalidInput(input);
 	}
+
+	/** Exponents MUST NOT have decimal points */
 
 	@Test
 	public void test_simulated_input_decimal_exponent() {
@@ -184,6 +219,8 @@ public class IntegrationTest {
 		
 		assertInvalidInput(input);
 	}
+
+	/** Decimal Points MUST have a digit to the left AND right */
 
 	@Test
 	public void test_simulated_input_no_right_digit() {
@@ -206,12 +243,16 @@ public class IntegrationTest {
 		assertInvalidInput(input);
 	}
 
+	/** Numbers MUST NOT be empty */
+
 	@Test
 	public void test_simulated_input_empty_base() {
 		String input = "e4";
 		
 		assertInvalidInput(input);
 	}
+
+	/** Exponents MUST NOT be empty */
 
 	@Test
 	public void test_simulated_input_empty_exponent() {
