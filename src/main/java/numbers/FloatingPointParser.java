@@ -57,6 +57,12 @@ public class FloatingPointParser {
 	}
 	
 	public static class FloatingPointParserTestHook {
+		DecimalInput getDefaultExponent() {
+			return FloatingPointParser.DEFAULT_EXPONENT;
+		}
 
+		DecimalInput getDefaultGeneratedExponent() {
+			return (new FloatingPointParser("")).getExpo();
+		}
 	}
 }
