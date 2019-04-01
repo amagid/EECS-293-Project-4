@@ -19,7 +19,7 @@ public class FloatingPointParserTest {
     public void test_constructor_empty_input_assigns_zero_exponent() {
         DecimalInput generatedExpo = floatingPointParserHook.getDefaultGeneratedExponent();
         DecimalInput expectedExpo = new DecimalInput("0");
-        
-        assertTrue(generatedExpo.toString() == expectedExpo.toString());
+
+        assertTrue(generatedExpo.toString().equals(expectedExpo.toString()));
     }
 }
