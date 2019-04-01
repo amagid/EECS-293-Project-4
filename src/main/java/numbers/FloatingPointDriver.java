@@ -36,32 +36,19 @@ public final class FloatingPointDriver {
 		FloatingPointParser parser = null;
 		String line = getNonEmptyInputLine(input);
 
-		// Clear whitespace from input
-		StringBuilder builder = new StringBuilder();
-		boolean foundNumber = false;
-		boolean outOfNumber = false;
-		for (int i = 0; i < line.length(); i++) {
-			if (!Character.isWhitespace(line.charAt(i))) {
-				builder.append(line.charAt(i));
-				foundNumber = true;
-				if (outOfNumber) {
-					throw new NumberFormatException("Illegal embedded whitespace in input.");
-				}
-			} else if (foundNumber && !outOfNumber) {
-				outOfNumber = true;
-			}
-		}
+		// Clear whitespace from input line
+		String number = clearWhitespace(line);
 
 		// Ensure some non-whitespace input was found
-		line = builder.toString();
-		if (line.length() != 0) {
+		StringBuilder builder;
+		if (number.length() != 0) {
 			// Shift exponential to upper case
 			builder = new StringBuilder();
-			for (int i = 0; i < line.length(); i++) {
-				if (!Character.isUpperCase(line.charAt(i)))
-					builder.append(Character.toUpperCase(line.charAt(i)));
+			for (int i = 0; i < number.length(); i++) {
+				if (!Character.isUpperCase(number.charAt(i)))
+					builder.append(Character.toUpperCase(number.charAt(i)));
 				else
-					builder.append(line.charAt(i));
+					builder.append(number.charAt(i));
 			}
 			// Initialize and store parser
 			parser = FloatingPointParser.build(line);
@@ -90,6 +77,25 @@ public final class FloatingPointDriver {
 			throw new IllegalArgumentException("No input detected.");
 		}
 		return line;
+	}
+
+	private String clearWhitespace(String inputLine) {
+		StringBuilder builder = new StringBuilder();
+		boolean foundNumber = false;
+		boolean outOfNumber = false;
+		for (int i = 0; i < inputLine.length(); i++) {
+			if (!Character.isWhitespace(inputLine.charAt(i))) {
+				builder.append(inputLine.charAt(i));
+				foundNumber = true;
+				if (outOfNumber) {
+					throw new NumberFormatException("Illegal embedded whitespace in input.");
+				}
+			} else if (foundNumber && !outOfNumber) {
+				outOfNumber = true;
+			}
+		}
+
+		return builder.toString();		
 	}
 	
 	public static class FloatingPointDriverTestHook {
