@@ -260,4 +260,139 @@ public class IntegrationTest {
 		
 		assertInvalidInput(input);
 	}
+
+	/** Numbers MAY have whitespace to the left and right */
+
+	@Test
+	public void test_simulated_input_short_whitespace_left() {
+		String input = " 1.0";
+		Double expected = 1.0;
+
+		Double result = floatingPointDriverHook.simulateInput(input);
+
+		assertEquals(result, expected);
+	}
+
+	@Test
+	public void test_simulated_input_short_whitespace_right() {
+		String input = "1.0 ";
+		Double expected = 1.0;
+
+		Double result = floatingPointDriverHook.simulateInput(input);
+
+		assertEquals(result, expected);
+	}
+
+	@Test
+	public void test_simulated_input_short_whitespace_both() {
+		String input = " 1.0 ";
+		Double expected = 1.0;
+
+		Double result = floatingPointDriverHook.simulateInput(input);
+
+		assertEquals(result, expected);
+	}
+
+	@Test
+	public void test_simulated_input_long_whitespace_left() {
+		String input = "   \t   1.0";
+		Double expected = 1.0;
+
+		Double result = floatingPointDriverHook.simulateInput(input);
+
+		assertEquals(result, expected);
+	}
+
+	@Test
+	public void test_simulated_input_long_whitespace_right() {
+		String input = "1.0   \t   ";
+		Double expected = 1.0;
+
+		Double result = floatingPointDriverHook.simulateInput(input);
+
+		assertEquals(result, expected);
+	}
+
+	@Test
+	public void test_simulated_input_long_whitespace_both() {
+		String input = "   \t   1.0   \t   ";
+		Double expected = 1.0;
+
+		Double result = floatingPointDriverHook.simulateInput(input);
+
+		assertEquals(result, expected);
+	}
+
+	/** Numbers MUST NOT have whitespace embedded within them */
+
+	@Test
+	public void test_simulated_input_whitespace_inside() {
+		String input = "1 . 0";
+		
+		assertInvalidInput(input);
+	}
+
+	/** Numbers MAY be padded with zeros */
+
+	@Test
+	public void test_simulated_input_left_pad_zeros_short() {
+		String input = "01.0";
+		Double expected = 1.0;
+
+		Double result = floatingPointDriverHook.simulateInput(input);
+
+		assertEquals(result, expected);
+	}
+
+	@Test
+	public void test_simulated_input_right_pad_zeros_short() {
+		String input = "1.00";
+		Double expected = 1.0;
+
+		Double result = floatingPointDriverHook.simulateInput(input);
+
+		assertEquals(result, expected);
+	}
+
+	@Test
+	public void test_simulated_input_left_pad_zeros_long() {
+		String input = "00000000001.0";
+		Double expected = 1.0;
+
+		Double result = floatingPointDriverHook.simulateInput(input);
+
+		assertEquals(result, expected);
+	}
+
+	@Test
+	public void test_simulated_input_right_pad_zeros_long() {
+		String input = "1.0000000000";
+		Double expected = 1.0;
+
+		Double result = floatingPointDriverHook.simulateInput(input);
+
+		assertEquals(result, expected);
+	}
+
+	/** Exponents MAY be left-padded with zeros */
+
+	@Test
+	public void test_simulated_input_exponent_left_pad_zeros_short() {
+		String input = "1e01";
+		Double expected = 10.0;
+
+		Double result = floatingPointDriverHook.simulateInput(input);
+
+		assertEquals(result, expected);
+	}
+
+	@Test
+	public void test_simulated_input_exponent_left_pad_zeros_long() {
+		String input = "1e00000000001";
+		Double expected = 10.0;
+
+		Double result = floatingPointDriverHook.simulateInput(input);
+
+		assertEquals(result, expected);
+	}
 }
