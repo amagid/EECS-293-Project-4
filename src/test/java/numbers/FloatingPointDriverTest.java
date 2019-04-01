@@ -13,6 +13,7 @@ public class FloatingPointDriverTest {
 	// For using hook methods that are not object-specific
 	private static final FloatingPointDriverTestHook floatingPointDriverHook = new FloatingPointDriver.FloatingPointDriverTestHook();
 
+	@Test
     public void test_none() {
 		assertTrue(true);
 	}
