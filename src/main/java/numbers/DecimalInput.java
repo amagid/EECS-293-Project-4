@@ -142,5 +142,9 @@ class DecimalInput {
 
 			return number.hasValidPadding();
 		}
+
+		boolean isNumberPositive(String input) {
+			return DecimalInput.isNumberPositive(input);
+		}
 	}
 }
