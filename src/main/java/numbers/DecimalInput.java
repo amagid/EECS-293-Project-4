@@ -18,6 +18,7 @@ class DecimalInput {
 	static { // Setup set of valid signs
 		Set<Character> signs = new HashSet<>();
 		signs.add('-');
+		signs.add('+');
 		SIGN_SET = Collections.unmodifiableSet(signs);
 	}
 	static { // Setup set of valid characters in a decimal

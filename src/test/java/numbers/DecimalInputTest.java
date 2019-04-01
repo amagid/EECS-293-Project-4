@@ -175,4 +175,48 @@ public class DecimalInputTest {
 
         assertFalse(result);
     }
+
+    /** removeSign tests **/
+
+    @Test
+    public void test_remove_sign_empty_input() {
+        String result = decimalInputHook.removeSign("");
+
+        assertEquals(result, "");
+    }
+
+    @Test
+    public void test_remove_sign_only_plus() {
+        String result = decimalInputHook.removeSign("+");
+
+        assertEquals(result, "");
+    }
+
+    @Test
+    public void test_remove_sign_only_minus() {
+        String result = decimalInputHook.removeSign("-");
+
+        assertEquals(result, "");
+    }
+
+    @Test
+    public void test_remove_sign_short_int_no_sign() {
+        String result = decimalInputHook.removeSign("1");
+
+        assertEquals(result, "1");
+    }
+
+    @Test
+    public void test_remove_sign_short_int_sign() {
+        String result = decimalInputHook.removeSign("+1");
+
+        assertEquals(result, "1");
+    }
+
+    @Test
+    public void test_remove_sign_long_int_no_sign() {
+        String result = decimalInputHook.removeSign("12345678987654321");
+
+        assertEquals(result, "12345678987654321");
+    }
 }
