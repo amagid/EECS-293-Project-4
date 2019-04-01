@@ -24,6 +24,10 @@ Changed secondary condition from **number[0] == '+'** to **number[0] != '-'** to
 
 Added **'+'** to list of signs so it will be properly recognized and removed from numbers.
 
+#### hasValidMiddlePadding()
+
+Changed to only count **digits**, (no increment for **underscores**) and use **allMatch** rather than **noneMatch**. This effectively requires all underscores to be placed exactly after a multiple of 3 **digits**.
+
 ## FloatingPointParser
 
 #### DEFAULT_EXPONENT

@@ -105,9 +105,9 @@ class DecimalInput {
 		return new StringBuilder(leading)
 				.reverse()
 				.chars()
-				.peek(i -> digitCount.incrementAndGet())
+				.peek(i -> digitCount.addAndGet((char)i != PADDING ? 1 : 0))
 				.filter(i -> PADDING == (char)i)
-				.noneMatch(i -> digitCount.get() % 3 == 0);
+				.allMatch(i -> digitCount.get() % 3 == 0);
 	}
 	
 	private static String removePadding(String number) { return number.replaceAll(getRegexOf(PADDING), ""); }
