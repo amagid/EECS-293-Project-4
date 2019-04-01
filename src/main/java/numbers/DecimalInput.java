@@ -146,5 +146,9 @@ class DecimalInput {
 		boolean isNumberPositive(String input) {
 			return DecimalInput.isNumberPositive(input);
 		}
+
+		String removeSign(String input) {
+			return DecimalInput.removeSign(input);
+		}
 	}
 }
