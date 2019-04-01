@@ -40,19 +40,11 @@ public final class FloatingPointDriver {
 		String number = clearWhitespace(line);
 
 		// Ensure some non-whitespace input was found
-		StringBuilder builder;
-		if (number.length() != 0) {
-			parser = FloatingPointParser.build(number);
-		} else {
+		if (number.length() == 0) {
 			throw new NumberFormatException("Received only whitespace.");
 		}
 
-		// Ensure some numerical input was received
-		if (parser == null) {
-			throw new IllegalArgumentException("No numerical input detected");
-		} else {
-			return parser;
-		}
+		return FloatingPointParser.build(number);
 	}
 
 	private String getNonEmptyInputLine(BufferedReader input) {
