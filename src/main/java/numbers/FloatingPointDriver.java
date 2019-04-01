@@ -81,8 +81,6 @@ public final class FloatingPointDriver {
 			System.setIn(new ByteArrayInputStream(input.getBytes()));
 
 			BufferedReader inputReader = new BufferedReader(new InputStreamReader(System.in));
-
-			System.out.println(input);
 					
 			FloatingPointDriver driver = new FloatingPointDriver();
 			Optional<Double> result = driver.runFloatingPointParser(inputReader);
