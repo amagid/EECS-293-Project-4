@@ -156,7 +156,9 @@ public class IntegrationTest {
 		String input = "1__234______567.0";
 		Double expected = 1234567.0;
 
-		assertInvalidInput(input);
+		Double result = floatingPointDriverHook.simulateInput(input);
+
+		assertEquals(result, expected);
 	}
 
 	/** Numbers MUST NOT use underscores where they would be invalid in normal writing */
