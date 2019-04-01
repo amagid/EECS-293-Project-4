@@ -121,7 +121,65 @@ public class DecimalInputTest {
     @Test
     public void test_has_valid_padding_valid_front_padding() {
         boolean result = decimalInputHook.hasValidPadding("01_234_567.2");
-        
+
         assertTrue(result);
+    }
+
+    /** isNumberPositive tests **/
+    
+    @Test
+    public void test_is_number_positive_zero() {
+        boolean result = decimalInputHook.isNumberPositive("0");
+
+        assertTrue(result);
+    }
+    
+    @Test
+    public void test_is_number_positive_short_int() {
+        boolean result = decimalInputHook.isNumberPositive("12");
+
+        assertTrue(result);
+    }
+    
+    @Test
+    public void test_is_number_positive_long_int() {
+        boolean result = decimalInputHook.isNumberPositive("12345678987654321");
+
+        assertTrue(result);
+    }
+    
+    @Test
+    public void test_is_number_positive_with_plus() {
+        boolean result = decimalInputHook.isNumberPositive("+0");
+
+        assertTrue(result);
+    }
+    
+    @Test
+    public void test_is_number_positive_with_minus() {
+        boolean result = decimalInputHook.isNumberPositive("-0");
+
+        assertFalse(result);
+    }
+    
+    @Test
+    public void test_is_number_positive_empty() {
+        boolean result = decimalInputHook.isNumberPositive("");
+
+        assertFalse(result);
+    }
+    
+    @Test
+    public void test_is_number_positive_only_plus() {
+        boolean result = decimalInputHook.isNumberPositive("+");
+
+        assertFalse(result);
+    }
+    
+    @Test
+    public void test_is_number_positive_only_minus() {
+        boolean result = decimalInputHook.isNumberPositive("-");
+
+        assertFalse(result);
     }
 }
