@@ -79,7 +79,7 @@ class DecimalInput {
 	 */
 	private boolean hasValidPadding() {
 		String[] numbers = getAllChunks();
-		return (numbers.length == 2 ? isNotWithinString(PADDING,numbers[1]) : false) 
+		return (numbers.length == 2 ? isNotWithinString(PADDING,numbers[1]) : true) 
 				&& hasValidLeadingPadding(numbers[0]);
 	}
 	
@@ -135,6 +135,12 @@ class DecimalInput {
 			DecimalInput number = new DecimalInput(input);
 
 			return number.hasValidDecimalPoint();
+		}
+
+		boolean hasValidPadding(String input) {
+			DecimalInput number = new DecimalInput(input);
+
+			return number.hasValidPadding();
 		}
 	}
 }
