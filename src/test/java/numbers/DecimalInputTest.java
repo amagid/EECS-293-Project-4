@@ -28,8 +28,39 @@ public class DecimalInputTest {
 
 	/* Example: 12_34 -> invalid */
 	@Test
-	public void test_padding_bad_underscore() {
+	public void test_padding_bad_underscore_position_3() {
 		assertFalse(decimalInputHook.hasValidMiddlePadding("12_34"));
+	}
+
+	/* Example: 123_4 -> invalid */
+	@Test
+	public void test_padding_bad_underscore_position_4() {
+		assertFalse(decimalInputHook.hasValidMiddlePadding("123_4"));
+	}
+
+    // Testing to ensure underscore validation is stable in larger numbers
+	/* Example: 1_234_567_898_765_432 -> valid */
+	@Test
+	public void test_padding_good_underscore_big_number_position_1() {
+		assertTrue(decimalInputHook.hasValidMiddlePadding("1_234_567_898_765_432"));
+    }
+    
+	/* Example: 12_345_678_987_654_32 -> invalid */
+	@Test
+	public void test_padding_bad_underscore_big_number_position_2() {
+		assertFalse(decimalInputHook.hasValidMiddlePadding("12_345_678_987_654_32"));
+    }
+    
+	/* Example: 123_456_789_876_543_2 -> invalid */
+	@Test
+	public void test_padding_bad_underscore_big_number_position_3() {
+		assertFalse(decimalInputHook.hasValidMiddlePadding("123_456_789_876_543_2"));
+	}
+    
+	/* Example: 12_34_567_898_765_432 -> invalid */
+	@Test
+	public void test_padding_bad_underscore_big_number_mostly_good() {
+		assertFalse(decimalInputHook.hasValidMiddlePadding("12_34_567_898_765_432"));
 	}
 
 	/* Example: _1_234 -> invalid */
