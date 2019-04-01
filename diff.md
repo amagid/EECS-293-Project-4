@@ -29,3 +29,9 @@ Added **'+'** to list of signs so it will be properly recognized and removed fro
 #### DEFAULT_EXPONENT
 
 Changed default exponent to **0** instead of **1** since when no exponent is supplied, the number should be multiplied by **1**, not **10**.
+
+#### Constructor
+
+Changed EXPONENTIAL to a **char[] EXPONENTIALS** containing both **'e'** and **'E'** so that capital E exponents will be properly recognized." Updated constructor and parseDouble to work with this new array format.
+
+## FloatingPointDriver
