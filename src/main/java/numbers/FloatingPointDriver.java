@@ -67,7 +67,7 @@ public final class FloatingPointDriver {
 	}
 	
 	public static class FloatingPointDriverTestHook {
-		String simulateInput(String input) { 
+		Double simulateInput(String input) { 
 			System.setIn(new ByteArrayInputStream(input.getBytes()));
 
 			BufferedReader inputReader = new BufferedReader(new InputStreamReader(System.in));
@@ -78,7 +78,7 @@ public final class FloatingPointDriver {
 			Optional<Double> result = driver.runFloatingPointParser(inputReader);
 
 
-			return result.isPresent() ? result.get().toString() : "Invalid Input";
+			return result.isPresent() ? result.get() : null;
 		}
 	}
 }
