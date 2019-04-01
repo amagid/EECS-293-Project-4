@@ -117,7 +117,7 @@ class DecimalInput {
 	}
 	
 	private static boolean isNumberPositive(String number) {
-		return !number.isEmpty() && number.charAt(0) == '+';
+		return !number.isEmpty() && number.charAt(0) != '-';
 	}
 	
 	private static boolean isNotWithinString (char c, String str) { return str.indexOf(c) < 0; }

@@ -15,3 +15,7 @@ Added -1 second argument to .split() to preserve trailing empty strings. This al
 #### hasValidPadding()
 
 Changed default return of ternary operator from **false** to **true** to properly handle integer exponents (only check "left" part of number when there is no right part)
+
+#### isNumberPositive
+
+Changed secondary condition from **number[0] == '+'** to **number[0] != '-'** to express that numbers are positive when no sign is present.
