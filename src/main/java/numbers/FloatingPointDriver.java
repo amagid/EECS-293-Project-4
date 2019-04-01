@@ -51,7 +51,7 @@ public final class FloatingPointDriver {
 					builder.append(number.charAt(i));
 			}
 			// Initialize and store parser
-			parser = FloatingPointParser.build(line);
+			parser = FloatingPointParser.build(number);
 		} else {
 			throw new NumberFormatException("Received only whitespace.");
 		}
