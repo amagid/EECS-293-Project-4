@@ -29,57 +29,44 @@ public final class FloatingPointDriver {
 
 	// Reads from the input reader and builds a parser
 	private final FloatingPointParser getFloatingPointParser(BufferedReader input) {
-		FloatingPointParser parser = null;
-
 		// Validate that input is not null
-		if (input != null) {
+		assert input != null;
+	
+		// Attempt to read a line of input, throw error if no input
+		FloatingPointParser parser = null;
+		String line = getNonEmptyInputLine(input);
 
-			// Attempt to read a line of input
-			String line = null;
-			try {
-				line = input.readLine();
-			} catch (Exception e) {
-				System.out.println(e.getMessage());
-			}
-
-			// Ensure input was not empty
-			if (line == null)
-				throw new IllegalArgumentException("No input detected.");
-			else {
-
-				// Clear whitespace from input
-				StringBuilder builder = new StringBuilder();
-				boolean foundNumber = false;
-				boolean outOfNumber = false;
-				for (int i = 0; i < line.length(); i++) {
-					if (!Character.isWhitespace(line.charAt(i))) {
-						builder.append(line.charAt(i));
-						foundNumber = true;
-						if (outOfNumber) {
-							throw new NumberFormatException("Illegal embedded whitespace in input.");
-						}
-					} else if (foundNumber && !outOfNumber) {
-						outOfNumber = true;
-					}
+		// Clear whitespace from input
+		StringBuilder builder = new StringBuilder();
+		boolean foundNumber = false;
+		boolean outOfNumber = false;
+		for (int i = 0; i < line.length(); i++) {
+			if (!Character.isWhitespace(line.charAt(i))) {
+				builder.append(line.charAt(i));
+				foundNumber = true;
+				if (outOfNumber) {
+					throw new NumberFormatException("Illegal embedded whitespace in input.");
 				}
-
-				// Ensure some non-whitespace input was found
-				line = builder.toString();
-				if (line.length() != 0) {
-					// Shift exponential to upper case
-					builder = new StringBuilder();
-					for (int i = 0; i < line.length(); i++) {
-						if (!Character.isUpperCase(line.charAt(i)))
-							builder.append(Character.toUpperCase(line.charAt(i)));
-						else
-							builder.append(line.charAt(i));
-					}
-					// Initialize and store parser
-					parser = FloatingPointParser.build(line);
-				} else {
-					throw new NumberFormatException("Received only whitespace.");
-				}
+			} else if (foundNumber && !outOfNumber) {
+				outOfNumber = true;
 			}
+		}
+
+		// Ensure some non-whitespace input was found
+		line = builder.toString();
+		if (line.length() != 0) {
+			// Shift exponential to upper case
+			builder = new StringBuilder();
+			for (int i = 0; i < line.length(); i++) {
+				if (!Character.isUpperCase(line.charAt(i)))
+					builder.append(Character.toUpperCase(line.charAt(i)));
+				else
+					builder.append(line.charAt(i));
+			}
+			// Initialize and store parser
+			parser = FloatingPointParser.build(line);
+		} else {
+			throw new NumberFormatException("Received only whitespace.");
 		}
 
 		// Ensure some numerical input was received
@@ -88,6 +75,21 @@ public final class FloatingPointDriver {
 		} else {
 			return parser;
 		}
+	}
+
+	private String getNonEmptyInputLine(BufferedReader input) {
+		String line = null;
+		try {
+			line = input.readLine();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
+		// Ensure input was not empty
+		if (line == null) {
+			throw new IllegalArgumentException("No input detected.");
+		}
+		return line;
 	}
 	
 	public static class FloatingPointDriverTestHook {
