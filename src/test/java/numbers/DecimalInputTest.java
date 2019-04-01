@@ -170,13 +170,6 @@ public class DecimalInputTest {
     }
     
     @Test
-    public void test_is_number_positive_only_plus() {
-        boolean result = decimalInputHook.isNumberPositive("+");
-
-        assertFalse(result);
-    }
-    
-    @Test
     public void test_is_number_positive_only_minus() {
         boolean result = decimalInputHook.isNumberPositive("-");
 
