@@ -87,4 +87,41 @@ public class DecimalInputTest {
 
 		assertFalse(result);
     }
+
+    /** hasValidPadding tests **/
+
+    @Test
+    public void test_has_valid_padding_no_padding() {
+        boolean result = decimalInputHook.hasValidPadding("1.2");
+
+        assertTrue(result);
+    }
+    
+    @Test
+    public void test_has_valid_padding_invalid_front_padding() {
+        boolean result = decimalInputHook.hasValidPadding("1_02.3");
+
+        assertFalse(result);
+    }
+    
+    @Test
+    public void test_has_valid_padding_invalid_left_padding() {
+        boolean result = decimalInputHook.hasValidPadding("___1.2");
+
+        assertFalse(result);
+    }
+    
+    @Test
+    public void test_has_valid_padding_invalid_back_padding() {
+        boolean result = decimalInputHook.hasValidPadding("1.2_345");
+
+        assertFalse(result);
+    }
+    
+    @Test
+    public void test_has_valid_padding_valid_front_padding() {
+        boolean result = decimalInputHook.hasValidPadding("01_234_567.2");
+        
+        assertTrue(result);
+    }
 }
