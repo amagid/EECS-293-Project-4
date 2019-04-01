@@ -137,18 +137,6 @@ public class IntegrationTest {
 		assertEquals(result, expected);
 	}
 
-	/** Numbers MAY contain commas in valid places for readability */
-
-	@Test
-	public void test_simulated_input_large_base_commas() {
-		String input = "1,234,567.0";
-		Double expected = 1234567.0;
-
-		Double result = floatingPointDriverHook.simulateInput(input);
-
-		assertEquals(result, expected);
-	}
-
 	/** Numbers MAY use underscores in place of commas */
 
 	@Test
@@ -161,15 +149,7 @@ public class IntegrationTest {
 		assertEquals(result, expected);
 	}
 
-	/** Numbers MUST NOT use multiple commas/underscores in a row */
-
-	@Test
-	public void test_simulated_input_large_base_wide_commas() {
-		String input = "1,,234,,,,,,567.0";
-		Double expected = 1234567.0;
-
-		assertInvalidInput(input);
-	}
+	/** Numbers MUST NOT use multiple underscores in a row */
 
 	@Test
 	public void test_simulated_input_large_base_wide_underscores() {
@@ -179,28 +159,12 @@ public class IntegrationTest {
 		assertInvalidInput(input);
 	}
 
-	/** Numbers MUST NOT use commas/underscores where they would be invalid in normal writing */
-
-	@Test
-	public void test_simulated_input_invalid_commas() {
-		String input = "1,2.0";
-		
-		assertInvalidInput(input);
-	}
+	/** Numbers MUST NOT use underscores where they would be invalid in normal writing */
 
 	@Test
 	public void test_simulated_input_invalid_underscores() {
 		String input = "1_2.0";
 		
-		assertInvalidInput(input);
-	}
-
-	/** Exponents MUST NOT contain commas/underscores */
-
-	@Test
-	public void test_simulated_input_invalid_exponent() {
-		String input = "1e1,0";
-
 		assertInvalidInput(input);
 	}
 	
