@@ -42,15 +42,6 @@ public final class FloatingPointDriver {
 		// Ensure some non-whitespace input was found
 		StringBuilder builder;
 		if (number.length() != 0) {
-			// Shift exponential to upper case
-			builder = new StringBuilder();
-			for (int i = 0; i < number.length(); i++) {
-				if (!Character.isUpperCase(number.charAt(i)))
-					builder.append(Character.toUpperCase(number.charAt(i)));
-				else
-					builder.append(number.charAt(i));
-			}
-			// Initialize and store parser
 			parser = FloatingPointParser.build(number);
 		} else {
 			throw new NumberFormatException("Received only whitespace.");
