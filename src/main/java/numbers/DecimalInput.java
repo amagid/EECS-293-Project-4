@@ -179,5 +179,9 @@ class DecimalInput {
 		boolean isNotWithinString(char charInput, String strInput) {
 			return DecimalInput.isNotWithinString(charInput, strInput);
 		}
+
+		String getRegexOf(char input) {
+			return DecimalInput.getRegexOf(input);
+		}
 	}
 }

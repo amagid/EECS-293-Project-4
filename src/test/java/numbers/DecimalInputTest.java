@@ -440,4 +440,20 @@ public class DecimalInputTest {
 
         assertTrue(result);
     }
+
+    /** getRegexOf tests **/
+
+    @Test
+    public void test_get_regex_of_basic_character() {
+        String result = decimalInputHook.getRegexOf('a');
+
+        assertEquals(result, "a");
+    }
+    
+    @Test
+    public void test_get_regex_of_escapes_period() {
+        String result = decimalInputHook.getRegexOf('.');
+
+        assertEquals(result, "\\.");
+    }
 }
