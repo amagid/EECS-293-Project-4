@@ -67,6 +67,10 @@ public class FloatingPointParser {
 			return FloatingPointParser.DEFAULT_EXPONENT;
 		}
 
+		FloatingPointParser getInvalidParser() {
+			return FloatingPointParser.INVALID_PARSER;
+		}
+
 		DecimalInput getBase(String input) {
 			return new FloatingPointParser(input).base;
 		}
