@@ -13,7 +13,7 @@ public class FloatingPointParserTest {
 	// For using hook methods that are not object-specific
 	private static final FloatingPointParserTestHook floatingPointParserHook = new FloatingPointParser.FloatingPointParserTestHook();
 
-    /** constructor tests **/
+    /** constructor & getExpo tests **/
     
     @Test
     public void test_constructor_empty_input_assigns_zero_exponent() {
@@ -53,6 +53,17 @@ public class FloatingPointParserTest {
         DecimalInput expectedExpo = new DecimalInput("2");
 
         assertEquals(generatedExpo.toString(), expectedExpo.toString());
+    }
+
+    /** parseDouble tests */
+    
+    @Test
+    public void test_parse_double_base_and_exponent() {
+        FloatingPointParser parser = FloatingPointParser.build("1e2");
+        Double expected = 1e2;
+        Double result = parser.parseDouble();
+
+        assertEquals(result, expected);
     }
 
 
