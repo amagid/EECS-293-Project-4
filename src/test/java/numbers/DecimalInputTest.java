@@ -286,6 +286,29 @@ public class DecimalInputTest {
         assertFalse(result);
     }
 
+    /** hasNoEdgePadding tests **/
+
+    @Test
+    public void test_has_no_edge_padding_no_padding() {
+        boolean result = decimalInputHook.hasNoEdgePadding("1.2");
+
+        assertTrue(result);
+    }
+    
+    @Test
+    public void test_has_no_edge_padding_invalid_front_padding() {
+        boolean result = decimalInputHook.hasNoEdgePadding("_1.2");
+
+        assertFalse(result);
+    }
+    
+    @Test
+    public void test_has_no_edge_padding_invalid_back_padding() {
+        boolean result = decimalInputHook.hasNoEdgePadding("1.2_");
+
+        assertFalse(result);
+    }
+
     /** isNumberPositive tests **/
     
     @Test

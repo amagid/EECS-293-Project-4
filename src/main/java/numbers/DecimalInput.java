@@ -171,5 +171,9 @@ class DecimalInput {
 		boolean hasValidLeadingPadding(String input) {
 			return DecimalInput.hasValidLeadingPadding(input);
 		}
+
+		boolean hasNoEdgePadding(String input) {
+			return DecimalInput.hasNoEdgePadding(input);
+		}
 	}
 }
