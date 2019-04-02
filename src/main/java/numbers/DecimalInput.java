@@ -163,5 +163,9 @@ class DecimalInput {
 		boolean hasValidChars(DecimalInput input) {
 			return input.hasValidChars();
 		}
+
+		String[] getAllChunks(DecimalInput input) {
+			return input.getAllChunks();
+		}
 	}
 }

@@ -230,6 +230,39 @@ public class DecimalInputTest {
         assertTrue(result);
     }
 
+    /** getAllChunks tests */
+    
+    @Test
+    public void test_get_all_chunks_normal_input() {
+        DecimalInput input = new DecimalInput("1.0");
+        String[] result = decimalInputHook.getAllChunks(input);
+
+        assertEquals(result.length, 2);
+        assertEquals(result[0], "1");
+        assertEquals(result[1], "0");
+    }
+    
+    @Test
+    public void test_get_all_chunks_integer_input() {
+        DecimalInput input = new DecimalInput("1");
+        String[] result = decimalInputHook.getAllChunks(input);
+
+        assertEquals(result.length, 1);
+        assertEquals(result[0], "1");
+    }
+    
+    @Test
+    public void test_get_all_chunks_does_not_validate_num_chunks() {
+        DecimalInput input = new DecimalInput("1.2.3.4");
+        String[] result = decimalInputHook.getAllChunks(input);
+
+        assertEquals(result.length, 4);
+        assertEquals(result[0], "1");
+        assertEquals(result[1], "2");
+        assertEquals(result[2], "3");
+        assertEquals(result[3], "4");
+    }
+
     /** isNumberPositive tests **/
     
     @Test
