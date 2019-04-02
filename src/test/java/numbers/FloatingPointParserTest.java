@@ -77,5 +77,15 @@ public class FloatingPointParserTest {
         assertEquals(result, expected);
     }
 
+    /** containsAtLeastOneFloatingChunk tests */
+    
+    @Test
+    public void test_contains_at_least_one_floating_chunk_valid_input() {
+        boolean expected = true;
+        boolean result = floatingPointParserHook.containsAtLeastOneFloatingChunk("1e2");
+
+        assertEquals(result, expected);
+    }
+
 
 }

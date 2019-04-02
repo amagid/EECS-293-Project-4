@@ -74,5 +74,9 @@ public class FloatingPointParser {
 		DecimalInput getExpo(String input) {
 			return new FloatingPointParser(input).getExpo();
 		}
+
+		boolean containsAtLeastOneFloatingChunk(String input) {
+			return new FloatingPointParser(input).containsAtLeastOneFloatingChunk();
+		}
 	}
 }
