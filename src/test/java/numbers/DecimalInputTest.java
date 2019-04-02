@@ -23,6 +23,22 @@ public class DecimalInputTest {
         assertEquals(decimalInputHook.getNumber(input), "1.0");
     }
 
+    /** toString tests */
+    
+    @Test
+    public void test_is_positive_decimal_input() {
+        DecimalInput input = new DecimalInput("1.0");
+
+        assertEquals(input.toString(), "+1.0");
+    }
+    
+    @Test
+    public void test_is_positive_negative_decimal_input() {
+        DecimalInput input = new DecimalInput("-1.0");
+
+        assertEquals(input.toString(), "-1.0");
+    }
+
 	/** hasValidMiddlePadding tests **/
 	/* Example: 1_234 -> valid */
 	@Test
