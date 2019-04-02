@@ -159,5 +159,9 @@ class DecimalInput {
 		String getNumber(DecimalInput input) {
 			return input.number;
 		}
+
+		boolean hasValidChars(DecimalInput input) {
+			return input.hasValidChars();
+		}
 	}
 }

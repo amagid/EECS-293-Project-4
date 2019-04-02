@@ -71,6 +71,22 @@ public class DecimalInputTest {
         assertFalse(input.isValid());
     }
 
+    /** hasValidChars tests */
+    
+    @Test
+    public void test_has_valid_chars_valid_input() {
+        DecimalInput input = new DecimalInput("1");
+
+        assertTrue(decimalInputHook.hasValidChars(input));
+    }
+    
+    @Test
+    public void test_has_valid_chars_invalid_input() {
+        DecimalInput input = new DecimalInput("invalid");
+
+        assertFalse(decimalInputHook.hasValidChars(input));
+    }
+
 	/** hasValidMiddlePadding tests **/
 	/* Example: 1_234 -> valid */
 	@Test
