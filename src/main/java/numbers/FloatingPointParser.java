@@ -82,5 +82,9 @@ public class FloatingPointParser {
 		boolean hasValidBase(String input) {
 			return new FloatingPointParser(input).hasValidBase();
 		}
+
+		boolean hasValidIntegerExponent(String input) {
+			return new FloatingPointParser(input).hasValidIntegerExponent();
+		}
 	}
 }

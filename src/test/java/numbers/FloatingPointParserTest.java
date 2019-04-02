@@ -97,5 +97,15 @@ public class FloatingPointParserTest {
         assertEquals(result, expected);
     }
 
+    /** hasValidIntegerExponent tests */
+    
+    @Test
+    public void test_has_valid_integer_exponent_valid_input() {
+        boolean expected = true;
+        boolean result = floatingPointParserHook.hasValidIntegerExponent("1e2");
+
+        assertEquals(result, expected);
+    }
+
 
 }
