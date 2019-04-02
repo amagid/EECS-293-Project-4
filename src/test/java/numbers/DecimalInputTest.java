@@ -263,6 +263,29 @@ public class DecimalInputTest {
         assertEquals(result[3], "4");
     }
 
+    /** hasValidLeadingPadding tests **/
+
+    @Test
+    public void test_has_valid_leading_padding_no_padding() {
+        boolean result = decimalInputHook.hasValidLeadingPadding("1.2");
+
+        assertTrue(result);
+    }
+    
+    @Test
+    public void test_has_valid_leading_padding_invalid_front_padding() {
+        boolean result = decimalInputHook.hasValidLeadingPadding("_1.2");
+
+        assertFalse(result);
+    }
+    
+    @Test
+    public void test_has_valid_leading_padding_invalid_middle_padding() {
+        boolean result = decimalInputHook.hasValidLeadingPadding("1_._2");
+
+        assertFalse(result);
+    }
+
     /** isNumberPositive tests **/
     
     @Test

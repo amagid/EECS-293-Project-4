@@ -167,5 +167,9 @@ class DecimalInput {
 		String[] getAllChunks(DecimalInput input) {
 			return input.getAllChunks();
 		}
+
+		boolean hasValidLeadingPadding(String input) {
+			return DecimalInput.hasValidLeadingPadding(input);
+		}
 	}
 }
