@@ -36,4 +36,60 @@ public class FloatingPointDriverTest {
 		String input = "    ";
 		FloatingPointParser result = floatingPointDriverHook.getFloatingPointParser(input);
 	}
+
+	/** trimEdgeWhitespace tests */
+
+	@Test
+	public void test_trim_edge_whitespace_no_whitespace() {
+		String input = "1.0";
+		String expected = "1.0";
+		String result = floatingPointDriverHook.trimEdgeWhitespace(input);
+
+		assertEquals(result, expected);
+	}
+
+	@Test
+	public void test_trim_edge_whitespace_left_whitespace() {
+		String input = "    1.0";
+		String expected = "1.0";
+		String result = floatingPointDriverHook.trimEdgeWhitespace(input);
+
+		assertEquals(result, expected);
+	}
+
+	@Test
+	public void test_trim_edge_whitespace_right_whitespace() {
+		String input = "1.0    ";
+		String expected = "1.0";
+		String result = floatingPointDriverHook.trimEdgeWhitespace(input);
+
+		assertEquals(result, expected);
+	}
+
+	@Test
+	public void test_trim_edge_whitespace_both_whitespace() {
+		String input = "    1.0    ";
+		String expected = "1.0";
+		String result = floatingPointDriverHook.trimEdgeWhitespace(input);
+
+		assertEquals(result, expected);
+	}
+
+	@Test
+	public void test_trim_edge_whitespace_internal_whitespace() {
+		String input = "1 . 0";
+		String expected = "1 . 0";
+		String result = floatingPointDriverHook.trimEdgeWhitespace(input);
+
+		assertEquals(result, expected);
+	}
+
+	@Test
+	public void test_trim_edge_whitespace_empty_input() {
+		String input = "";
+		String expected = "";
+		String result = floatingPointDriverHook.trimEdgeWhitespace(input);
+
+		assertEquals(result, expected);
+	}
 }

@@ -117,5 +117,9 @@ public final class FloatingPointDriver {
 
 			return new FloatingPointDriver().getFloatingPointParser(inputReader);
 		}
+
+		String trimEdgeWhitespace(String input) {
+			return new FloatingPointDriver().trimEdgeWhitespace(input);
+		}
 	}
 }
