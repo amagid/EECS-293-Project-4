@@ -39,6 +39,22 @@ public class DecimalInputTest {
         assertEquals(input.toString(), "-1.0");
     }
 
+    /** isInteger tests */
+    
+    @Test
+    public void test_is_integer_integer() {
+        DecimalInput input = new DecimalInput("1");
+
+        assertTrue(input.isInteger());
+    }
+    
+    @Test
+    public void test_is_integer_decimal() {
+        DecimalInput input = new DecimalInput("1.0");
+
+        assertFalse(input.isInteger());
+    }
+
 	/** hasValidMiddlePadding tests **/
 	/* Example: 1_234 -> valid */
 	@Test
