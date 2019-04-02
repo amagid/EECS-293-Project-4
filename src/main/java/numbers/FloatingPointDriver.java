@@ -121,5 +121,9 @@ public final class FloatingPointDriver {
 		String trimEdgeWhitespace(String input) {
 			return new FloatingPointDriver().trimEdgeWhitespace(input);
 		}
+
+		int numberEndIndex(String input) {
+			return new FloatingPointDriver().numberEndIndex(input);
+		}
 	}
 }

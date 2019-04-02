@@ -92,4 +92,42 @@ public class FloatingPointDriverTest {
 
 		assertEquals(result, expected);
 	}
+
+	/** numberEndIndex tests */
+
+	@Test
+	public void test_number_end_index_empty_input() {
+		String input = "";
+		int expected = 0;
+		int result = floatingPointDriverHook.numberEndIndex(input);
+
+		assertEquals(result, expected);
+	}
+
+	@Test
+	public void test_number_end_index_valid_input() {
+		String input = "1.0";
+		int expected = 3;
+		int result = floatingPointDriverHook.numberEndIndex(input);
+
+		assertEquals(result, expected);
+	}
+
+	@Test
+	public void test_number_end_index_right_padding() {
+		String input = "1.0    ";
+		int expected = 3;
+		int result = floatingPointDriverHook.numberEndIndex(input);
+
+		assertEquals(result, expected);
+	}
+
+	@Test
+	public void test_number_end_index_only_whitespace() {
+		String input = "      ";
+		int expected = 0;
+		int result = floatingPointDriverHook.numberEndIndex(input);
+
+		assertEquals(result, expected);
+	}
 }
