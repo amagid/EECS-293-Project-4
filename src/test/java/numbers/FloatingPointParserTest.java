@@ -66,5 +66,16 @@ public class FloatingPointParserTest {
         assertEquals(result, expected);
     }
 
+    /** isValidInput tests */
+    
+    @Test
+    public void test_is_valid_input_valid_input() {
+        FloatingPointParser parser = FloatingPointParser.build("1e2");
+        boolean expected = true;
+        boolean result = parser.isValidInput();
+
+        assertEquals(result, expected);
+    }
+
 
 }
