@@ -130,4 +130,33 @@ public class FloatingPointDriverTest {
 
 		assertEquals(result, expected);
 	}
+
+	/** hasInternalWhitespace tests */
+
+	@Test
+	public void test_has_internal_whitespace_empty_input() {
+		String input = "";
+		boolean expected = false;
+		boolean result = floatingPointDriverHook.hasInternalWhitespace(input);
+
+		assertEquals(result, expected);
+	}
+
+	@Test
+	public void test_has_internal_whitespace_no_whitespace() {
+		String input = "1.0";
+		boolean expected = false;
+		boolean result = floatingPointDriverHook.hasInternalWhitespace(input);
+
+		assertEquals(result, expected);
+	}
+
+	@Test
+	public void test_has_internal_whitespace_internal_whitespace() {
+		String input = "1. 0";
+		boolean expected = true;
+		boolean result = floatingPointDriverHook.hasInternalWhitespace(input);
+
+		assertEquals(result, expected);
+	}
 }

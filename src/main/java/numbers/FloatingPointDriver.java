@@ -125,5 +125,9 @@ public final class FloatingPointDriver {
 		int numberEndIndex(String input) {
 			return new FloatingPointDriver().numberEndIndex(input);
 		}
+
+		boolean hasInternalWhitespace(String input) {
+			return new FloatingPointDriver().hasInternalWhitespace(input);
+		}
 	}
 }
