@@ -403,4 +403,41 @@ public class DecimalInputTest {
 
         assertEquals(result, "12345678987654321");
     }
+
+    /** isNotWithinString tests **/
+
+    @Test
+    public void test_is_not_within_string_empty_string() {
+        boolean result = decimalInputHook.isNotWithinString('a', "");
+
+        assertTrue(result);
+    }
+    
+    @Test
+    public void test_is_not_within_string_input_at_string_start() {
+        boolean result = decimalInputHook.isNotWithinString('a', "abc");
+
+        assertFalse(result);
+    }
+    
+    @Test
+    public void test_is_not_within_string_input_at_string_end() {
+        boolean result = decimalInputHook.isNotWithinString('a', "cba");
+
+        assertFalse(result);
+    }
+    
+    @Test
+    public void test_is_not_within_string_input_in_string_middle() {
+        boolean result = decimalInputHook.isNotWithinString('a', "bac");
+
+        assertFalse(result);
+    }
+    
+    @Test
+    public void test_is_not_within_string_input_not_in_string() {
+        boolean result = decimalInputHook.isNotWithinString('a', "bcd");
+
+        assertTrue(result);
+    }
 }

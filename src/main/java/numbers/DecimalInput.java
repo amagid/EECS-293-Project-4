@@ -175,5 +175,9 @@ class DecimalInput {
 		boolean hasNoEdgePadding(String input) {
 			return DecimalInput.hasNoEdgePadding(input);
 		}
+
+		boolean isNotWithinString(char charInput, String strInput) {
+			return DecimalInput.isNotWithinString(charInput, strInput);
+		}
 	}
 }
