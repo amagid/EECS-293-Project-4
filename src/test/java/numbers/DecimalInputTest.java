@@ -13,6 +13,16 @@ public class DecimalInputTest {
 	// For using hook methods that are not object-specific
 	private static final DecimalInputTestHook decimalInputHook = new DecimalInput("").new DecimalInputTestHook();
 
+    /** constructor tests */
+    
+    @Test
+    public void test_constructor_assigns_isPositive_and_number() {
+        DecimalInput input = new DecimalInput("1.0");
+
+        assertTrue(decimalInputHook.getIsPositive(input));
+        assertEquals(decimalInputHook.getNumber(input), "1.0");
+    }
+
 	/** hasValidMiddlePadding tests **/
 	/* Example: 1_234 -> valid */
 	@Test
