@@ -67,8 +67,12 @@ public class FloatingPointParser {
 			return FloatingPointParser.DEFAULT_EXPONENT;
 		}
 
-		DecimalInput getDefaultGeneratedExponent() {
-			return (new FloatingPointParser("")).getExpo();
+		DecimalInput getBase(String input) {
+			return new FloatingPointParser(input).base;
+		}
+
+		DecimalInput getExpo(String input) {
+			return new FloatingPointParser(input).getExpo();
 		}
 	}
 }
