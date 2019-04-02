@@ -78,5 +78,9 @@ public class FloatingPointParser {
 		boolean containsAtLeastOneFloatingChunk(String input) {
 			return new FloatingPointParser(input).containsAtLeastOneFloatingChunk();
 		}
+
+		boolean hasValidBase(String input) {
+			return new FloatingPointParser(input).hasValidBase();
+		}
 	}
 }

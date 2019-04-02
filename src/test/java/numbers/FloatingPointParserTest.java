@@ -41,7 +41,7 @@ public class FloatingPointParserTest {
     
     @Test
     public void test_constructor_recognizes_lower_case_e() {
-        DecimalInput generatedExpo = floatingPointParserHook.getExpo("1.0e2");
+        DecimalInput generatedExpo = floatingPointParserHook.getExpo("1e2");
         DecimalInput expectedExpo = new DecimalInput("2");
 
         assertEquals(generatedExpo.toString(), expectedExpo.toString());
@@ -49,7 +49,7 @@ public class FloatingPointParserTest {
     
     @Test
     public void test_constructor_recognizes_upper_case_E() {
-        DecimalInput generatedExpo = floatingPointParserHook.getExpo("1.0E2");
+        DecimalInput generatedExpo = floatingPointParserHook.getExpo("1E2");
         DecimalInput expectedExpo = new DecimalInput("2");
 
         assertEquals(generatedExpo.toString(), expectedExpo.toString());
@@ -83,6 +83,16 @@ public class FloatingPointParserTest {
     public void test_contains_at_least_one_floating_chunk_valid_input() {
         boolean expected = true;
         boolean result = floatingPointParserHook.containsAtLeastOneFloatingChunk("1e2");
+
+        assertEquals(result, expected);
+    }
+
+    /** hasValidBase tests */
+    
+    @Test
+    public void test_has_valid_base_valid_input() {
+        boolean expected = true;
+        boolean result = floatingPointParserHook.hasValidBase("1e2");
 
         assertEquals(result, expected);
     }
