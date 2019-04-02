@@ -83,7 +83,7 @@ public final class FloatingPointDriver {
 	private int numberEndIndex(String inputLine) {
 		int endIndex = inputLine.length();
 
-		while (endIndex >= 0 && Character.isWhitespace(inputLine.charAt(endIndex - 1))) {
+		while (endIndex > 0 && Character.isWhitespace(inputLine.charAt(endIndex - 1))) {
 			endIndex--;
 		}
 
@@ -110,6 +110,12 @@ public final class FloatingPointDriver {
 
 
 			return result.isPresent() ? result.get() : null;
+		}
+
+		FloatingPointParser getFloatingPointParser(String input) {
+			BufferedReader inputReader = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(input.getBytes())));
+
+			return new FloatingPointDriver().getFloatingPointParser(inputReader);
 		}
 	}
 }
