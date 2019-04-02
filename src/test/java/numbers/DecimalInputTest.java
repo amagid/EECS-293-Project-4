@@ -55,6 +55,22 @@ public class DecimalInputTest {
         assertFalse(input.isInteger());
     }
 
+    /** isValid tests */
+    
+    @Test
+    public void test_is_valid_valid_input() {
+        DecimalInput input = new DecimalInput("1");
+
+        assertTrue(input.isValid());
+    }
+    
+    @Test
+    public void test_is_valid_invalid_input() {
+        DecimalInput input = new DecimalInput("invalid");
+
+        assertFalse(input.isValid());
+    }
+
 	/** hasValidMiddlePadding tests **/
 	/* Example: 1_234 -> valid */
 	@Test
