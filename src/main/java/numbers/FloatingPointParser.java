@@ -14,15 +14,15 @@ public class FloatingPointParser {
 	private static final FloatingPointParser INVALID_PARSER = new FloatingPointParser("");
 	
 	private static final DecimalInput DEFAULT_EXPONENT = new DecimalInput("0");
-	private final char[] EXPONENTIALS = { 'e', 'E' };
+	private final String[] EXPONENTIALS = { "e", "E" };
 
 	private final DecimalInput base;
 	private final Optional<DecimalInput> expo;
 	
 	private FloatingPointParser(String number) {
 		for (int i = 0; i < EXPONENTIALS.length; i++) {
-			if (number.contains(""+EXPONENTIALS[i])) {
-				String[] numbers = number.split(""+EXPONENTIALS[i], 2);
+			if (number.contains(EXPONENTIALS[i])) {
+				String[] numbers = number.split(EXPONENTIALS[i], 2);
 				base = new DecimalInput(numbers[0]);
 				expo = Optional.of(new DecimalInput(numbers[1]));
 
@@ -37,7 +37,7 @@ public class FloatingPointParser {
 
 	public Double parseDouble() {
 		assert this.isValidInput() : "Input not valid before parsing.";
-		return Double.parseDouble(base+""+EXPONENTIALS[0]+getExpo());
+		return Double.parseDouble(base+EXPONENTIALS[0]+getExpo());
 	}
 
 	/* A floating point constant is valid if it contains one or two floating chunks and both
