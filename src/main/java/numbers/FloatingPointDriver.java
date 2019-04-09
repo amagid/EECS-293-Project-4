@@ -23,12 +23,12 @@ public final class FloatingPointDriver {
 
 	// Retrieves input from the given BufferedReader and parses it to a Double
 	public final Optional<Double> runFloatingPointParser(BufferedReader input) {
-		FloatingPointParser parser = getFloatingPointParser(input);
+		FloatingPointParser parser = parseInput(input);
 		return parser.isValidInput() ? Optional.of(parser.parseDouble()) : Optional.empty();
 	}
 
 	// Reads from the input reader and builds a parser
-	private final FloatingPointParser getFloatingPointParser(BufferedReader input) {
+	private final FloatingPointParser parseInput(BufferedReader input) {
 		// Validate that input is not null
 		assert input != null;
 	
