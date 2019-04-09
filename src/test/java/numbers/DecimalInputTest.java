@@ -230,12 +230,12 @@ public class DecimalInputTest {
         assertTrue(result);
     }
 
-    /** getAllChunks tests */
+    /** splitChunks tests */
     
     @Test
     public void test_get_all_chunks_normal_input() {
         DecimalInput input = new DecimalInput("1.0");
-        String[] result = decimalInputHook.getAllChunks(input);
+        String[] result = decimalInputHook.splitChunks(input);
 
         assertEquals(result.length, 2);
         assertEquals(result[0], "1");
@@ -245,7 +245,7 @@ public class DecimalInputTest {
     @Test
     public void test_get_all_chunks_integer_input() {
         DecimalInput input = new DecimalInput("1");
-        String[] result = decimalInputHook.getAllChunks(input);
+        String[] result = decimalInputHook.splitChunks(input);
 
         assertEquals(result.length, 1);
         assertEquals(result[0], "1");
@@ -254,7 +254,7 @@ public class DecimalInputTest {
     @Test
     public void test_get_all_chunks_does_not_validate_num_chunks() {
         DecimalInput input = new DecimalInput("1.2.3.4");
-        String[] result = decimalInputHook.getAllChunks(input);
+        String[] result = decimalInputHook.splitChunks(input);
 
         assertEquals(result.length, 4);
         assertEquals(result[0], "1");

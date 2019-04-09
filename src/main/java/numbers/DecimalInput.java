@@ -65,7 +65,7 @@ class DecimalInput {
 	 * exists that splits the string into two further numbers.
 	 */
 	private boolean hasValidDecimalPoint() {
-		String[] numbers = getAllChunks();
+		String[] numbers = splitChunks();
 		Boolean valid = numbers.length > 0 && numbers.length < 3;
 
 		for (int i = 0; i < numbers.length; i++) {
@@ -79,12 +79,12 @@ class DecimalInput {
 	 * in the place of a comma in the leading number.
 	 */
 	private boolean hasValidPadding() {
-		String[] numbers = getAllChunks();
+		String[] numbers = splitChunks();
 		return (numbers.length == 2 ? isNotWithinString(PADDING,numbers[1]) : true) 
 				&& hasValidLeadingPadding(numbers[0]);
 	}
 	
-	private String[] getAllChunks() { return number.split(charToRegex(DECIMAL), -1); }
+	private String[] splitChunks() { return number.split(charToRegex(DECIMAL), -1); }
 	
 	private static boolean hasValidLeadingPadding(String leading) {
 		return hasNoEdgePadding(leading) && hasValidMiddlePadding(leading);
@@ -164,8 +164,8 @@ class DecimalInput {
 			return input.hasValidChars();
 		}
 
-		String[] getAllChunks(DecimalInput input) {
-			return input.getAllChunks();
+		String[] splitChunks(DecimalInput input) {
+			return input.splitChunks();
 		}
 
 		boolean hasValidLeadingPadding(String input) {
