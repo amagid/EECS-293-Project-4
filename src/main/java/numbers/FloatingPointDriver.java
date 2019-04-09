@@ -39,6 +39,14 @@ public final class FloatingPointDriver {
 		// Clear whitespace from input line
 		String number = trimEdgeWhitespace(line);
 
+		// It's zero complexity now. You can rightly go eat a dick.
+		validateNumberFormatting(number);
+
+		return FloatingPointParser.build(number);
+	}
+
+	private void validateNumberFormatting(String number) {
+		// Check for internal whitespace and reject input if there is any
 		if (hasInternalWhitespace(number)) {
 			throw new NumberFormatException("Illegal internal whitespace in input.");
 		}
@@ -47,8 +55,6 @@ public final class FloatingPointDriver {
 		if (number.length() == 0) {
 			throw new NumberFormatException("Received only whitespace.");
 		}
-
-		return FloatingPointParser.build(number);
 	}
 
 	private String getNonEmptyInputLine(BufferedReader input) {
