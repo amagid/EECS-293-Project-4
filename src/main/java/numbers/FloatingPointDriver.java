@@ -121,7 +121,7 @@ public final class FloatingPointDriver {
 		FloatingPointParser getFloatingPointParser(String input) {
 			BufferedReader inputReader = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(input.getBytes())));
 
-			return new FloatingPointDriver().getFloatingPointParser(inputReader);
+			return new FloatingPointDriver().parseInput(inputReader);
 		}
 
 		String trimEdgeWhitespace(String input) {
