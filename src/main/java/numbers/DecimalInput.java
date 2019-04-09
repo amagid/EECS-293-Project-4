@@ -84,7 +84,7 @@ class DecimalInput {
 				&& hasValidLeadingPadding(numbers[0]);
 	}
 	
-	private String[] getAllChunks() { return number.split(getRegexOf(DECIMAL), -1); }
+	private String[] getAllChunks() { return number.split(charToRegex(DECIMAL), -1); }
 	
 	private static boolean hasValidLeadingPadding(String leading) {
 		return hasNoEdgePadding(leading) && hasValidMiddlePadding(leading);
@@ -110,7 +110,7 @@ class DecimalInput {
 				.allMatch(i -> digitCount.get() % 3 == 0);
 	}
 	
-	private static String removePadding(String number) { return number.replaceAll(getRegexOf(PADDING), ""); }
+	private static String removePadding(String number) { return number.replaceAll(charToRegex(PADDING), ""); }
 	
 	private static String removeSign(String number) {
 		return number.isEmpty() || !SIGN_SET.contains(number.charAt(0)) ? number
@@ -123,7 +123,7 @@ class DecimalInput {
 	
 	private static boolean isNotWithinString (char c, String str) { return str.indexOf(c) < 0; }
 	
-	private static String getRegexOf(char ch) {
+	private static String charToRegex(char ch) {
 		return (ch == DECIMAL ? "\\" : "") + ch;
 	}
 	
@@ -180,8 +180,8 @@ class DecimalInput {
 			return DecimalInput.isNotWithinString(charInput, strInput);
 		}
 
-		String getRegexOf(char input) {
-			return DecimalInput.getRegexOf(input);
+		String charToRegex(char input) {
+			return DecimalInput.charToRegex(input);
 		}
 	}
 }
