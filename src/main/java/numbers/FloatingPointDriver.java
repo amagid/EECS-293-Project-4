@@ -39,7 +39,6 @@ public final class FloatingPointDriver {
 		// Clear whitespace from input line
 		String number = trimEdgeWhitespace(line);
 
-		// It's zero complexity now. You can rightly go eat a dick.
 		validateNumberFormatting(number);
 
 		return FloatingPointParser.build(number);
